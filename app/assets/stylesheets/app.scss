@@ -1,0 +1,16 @@
+$mdc-theme-primary: orange;
+@import "@material/button/mdc-button";
+@import "@material/top-app-bar/mdc-top-app-bar";
+@import "@material/typography/mdc-typography";
+
+html, body {
+  min-height: 100vh;
+}
+body {
+  display: flex;
+}
+
+main {
+  flex:1;
+  padding-top: 3rem;
+}
