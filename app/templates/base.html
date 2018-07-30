@@ -1,4 +1,4 @@
-{% load static wagtailuserbar %}
+{% load static wagtailimages_tags wagtailuserbar navigation_tags %}
 
 <!DOCTYPE html>
 <html class="no-js">
@@ -18,6 +18,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
         {# Global stylesheets #}
+        <link rel="apple-touch-icon" href="{% static 'img/apple-touch-icon.png' %}">
+        <link rel="icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon" />
+
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono">
         <link rel="stylesheet" type="text/css" href="{% static 'css/normalize.css' %}">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,600,700">
@@ -31,14 +34,18 @@
 
     <body class="mdc-typography {% block body_class %}{% endblock %}">
         {% wagtailuserbar %}
-
+      <aside class="mdc-drawer mdc-drawer--permanent">
+        {# Main Navigation Block #}
+        {% include 'components/_drawer.html' with parent=site_root calling_page=self %}
+      </aside>
+      <content class="mdc-content" role="main" tabindex="-1">
         {% block content %}{% endblock %}
+      </content>
+      {# Global javascript #}
+      <script type="text/javascript" src="{% static 'js/app.js' %}"></script>
 
-        {# Global javascript #}
-        <script type="text/javascript" src="{% static 'js/app.js' %}"></script>
-
-        {% block extra_js %}
-            {# Override this in templates to add extra javascript #}
-        {% endblock %}
+      {% block extra_js %}
+          {# Override this in templates to add extra javascript #}
+      {% endblock %}
     </body>
 </html>

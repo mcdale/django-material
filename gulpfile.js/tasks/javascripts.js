@@ -24,4 +24,6 @@ gulp.task('javascripts:browserify', function(){
   });
 });
 
-gulp.task('javascripts', ['javascripts:browserify']);
+gulp.task('javascripts', ['javascripts:browserify'], function(){
+  gulp.watch(config.src, ['javascripts:browserify']);
+});
