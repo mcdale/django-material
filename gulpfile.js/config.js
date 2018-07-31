@@ -15,18 +15,25 @@ module.exports = {
       'app/assets/images/**/*.png',
       'home/assets/images/**/*.png',
       'search/assets/images/**/*.png',
+      'project/assets/images/**/*.png',
+
     ],
     dest: 'app/static/img',
   },
   javascripts: {
     src: [
       'app/assets/javascripts/**/*.js',
+      'project/assets/javascripts/**/*.js',
     ],
     dest: 'app/static/js',
     entries: [
       {
-        src: 'app/assets/javascripts/app.js',
+        src: 'app/assets/javascripts/index.js',
         dest: 'app.js'
+      },
+      {
+        src: 'project/assets/javascripts/project/index.js',
+        dest: 'project.js'
       },
     ],
     transform: {
@@ -38,6 +45,7 @@ module.exports = {
   stylesheets: {
     src: [
       'app/assets/stylesheets/**/*.{sass,scss}',
+      'project/assets/stylesheets/**/*.{sass,scss}',
     ],
     dest: 'app/static/css',
     autoprefixer: {
@@ -56,6 +64,7 @@ module.exports = {
       'app/templates/**/*.html',
       'home/templates/**/*.html',
       'search/templates/**/*.html',
+      'project/templates/**/*.html',
     ],
   },
   browserSync: {

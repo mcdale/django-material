@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load wagtailcore_tags navigation_tags wagtailimages_tags %}
+
+{% block content %}
+{% include '_header.html' %}
+<main class="mdc-toolbar-fixed-adjust">
+  <div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1><small>{{ page.chapter_number }}</small>{{ page.chapter_title }}</h1>
+            <p>{{ page.introduction }}</p>
+        </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row no-gutters">
+        {% for article in articles %}
+            <div class="col-md-6 article-list-item">
+                <a href="{% pageurl article %}">
+                <h1 class="article-list-title">
+
+                    {% image article.image fill-660x270-c75 as image %}
+                    <img src="{{ image.url }}" width="{{ image.width }}" height="{{ image.height }}" alt="{{ image.alt }}" class="" />
+
+                    <span class="title">{{ article.title }}</span>
+
+                </h1></a>
+
+            </div>
+        {% endfor %}
+    </div>
+  </div>
+</main>
+{% endblock content %}
