@@ -22,19 +22,22 @@ body {
   font-family: 'Roboto';
   margin: 0;
   padding-top: 0.1px; // Prevent header h1 margin from pushing body down
-  display: flex;
-  flex-direction: row;
-  .mdc-drawer--permanent {
+}
 
-  }
+.mdc-flex {
+  display: flex;
   content[role="main"] {
-    overflow: auto;
-    
-    &.mdc-content {
-      @include mdc-elevation(4);
-    }
+
+    display: flex;
+    flex: 1;
     main {
-      // margin: 5rem 1rem 1rem 1rem;
+      @include mdc-elevation(4);
+      flex: 1;
+      overflow: auto;
+      &.mdc-toolbar-fixed-adjust {
+        margin: 6rem 3rem 0 3rem;
+        padding: 1rem 2rem;
+      }
     }
   }
 }

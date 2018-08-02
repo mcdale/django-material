@@ -1,0 +1,33 @@
+@import '@material/list/mdc-list';
+@import '@material/typography/mdc-typography';
+.mdc-top-app-bar {
+  display: flex;
+  .mdc-top-app-bar__row {
+    flex: 1;
+    .mdc-top-app-bar__title {
+      @include mdc-typography(headline6);
+      align-self: center;
+      margin: 0.5rem auto;
+    }
+  }
+}
+.template-knowledge-area-index-page,
+.template-knowledge-area-page {
+  .article-list {
+    .article-list-item {
+      a {
+        color: inherit;
+        text-decoration: none;
+        &.mdc-list-item-text {
+          .mdc-list-item-text__primary_text {
+            @include mdc-typography(headline6);
+            display:block;
+          }
+          .mdc-list-item-text__secondary_text {
+            @include mdc-typography(subtitle2);
+          }
+        }
+      }
+    }
+  }
+}

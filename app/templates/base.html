@@ -32,7 +32,7 @@
         {% endblock %}
     </head>
 
-    <body class="mdc-typography {% block body_class %}{% endblock %}">
+    <body class="mdc-typography mdc-flex {% block body_class %}template-{{ self.get_verbose_name|slugify }}{% endblock %}">
         {% wagtailuserbar %}
       <aside class="mdc-drawer mdc-drawer--permanent">
         {# Main Navigation Block #}

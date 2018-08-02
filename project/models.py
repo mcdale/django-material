@@ -92,9 +92,6 @@ class KnowledgeAreaIndexPage(Page):
     """
     A Page model that creates an index page (a listview)
     """
-    introduction = models.TextField(
-        help_text='Text to describe the page',
-        blank=True)
     image = models.ForeignKey(
         'wagtailimages.Image',
         null=True,
@@ -103,6 +100,17 @@ class KnowledgeAreaIndexPage(Page):
         related_name='+',
         help_text='Landscape mode only; horizontal width between 1000px and 3000px.'
     )
+
+    introduction = models.TextField(
+        help_text='Text to describe the page',
+        blank=True)
+
+    knowledge_area = models.ForeignKey(
+        'KnowledgeArea',
+        null=True,
+        on_delete=models.SET_NULL,
+        related_name='+',
+        help_text='Select a PMI knowledge area')
 
     # Only LocationPage objects can be added underneath this index page
     subpage_types = ['KnowledgeAreaPage']
@@ -124,10 +132,19 @@ class KnowledgeAreaIndexPage(Page):
         return context
 
     content_panels = Page.content_panels + [
+        FieldPanel('knowledge_area', classname="full"),
         FieldPanel('introduction', classname="full"),
         ImageChooserPanel('image'),
     ]
 
+
 class KnowledgeAreaPage(Page):
+    abstract = models.TextField(
+        help_text='Text to describe the article',
+        blank=True)
+
+    content_panels = Page.content_panels + [
+        FieldPanel('abstract', classname="full"),
+    ]
 
     parent_page_types = ['KnowledgeAreaIndexPage']
