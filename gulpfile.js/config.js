@@ -22,13 +22,13 @@ module.exports = {
   },
   javascripts: {
     src: [
-      'app/assets/javascripts/**/*.js',
+      'material/assets/javascripts/**/*.js',
       'project/assets/javascripts/**/*.js',
     ],
     dest: 'app/static/js',
     entries: [
       {
-        src: 'app/assets/javascripts/index.js',
+        src: 'material/assets/javascripts/index.js',
         dest: 'app.js'
       },
       {
@@ -44,7 +44,7 @@ module.exports = {
   },
   stylesheets: {
     src: [
-      'app/assets/stylesheets/**/*.{sass,scss}',
+      'material/assets/stylesheets/**/*.{sass,scss}',
       'project/assets/stylesheets/**/*.{sass,scss}',
     ],
     dest: 'app/static/css',
@@ -61,11 +61,12 @@ module.exports = {
   },
   templates: {
     src: [
-      'app/templates/**/*.html',
+      'material/templates/**/*.html',
       'home/templates/**/*.html',
       'search/templates/**/*.html',
       'project/templates/**/*.html',
     ],
+    dest: 'app/templates',
   },
   browserSync: {
     options: {

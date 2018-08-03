@@ -1,0 +1,15 @@
+{% extends 'project/base.html' %}
+{% load static wagtailcore_tags navigation_tags wagtailimages_tags %}
+{% block main %}
+  <h1>{{page}}</h1>
+  <p>{{ page.introduction }}</p>
+  <ul class="mdc-list mdc-list--two-line" aria-orientation="vertical">
+  {% for article in articles %}
+    <li class="mdc-list-item">
+      <span class="mdc-list-item__text">
+        <span class="mdc-list-item__primary-text"><a href="{% pageurl article %}">{{ article.title }}</a></span>
+        <span class="mdc-list-item__secondary-text">{{ article.abstract }}</span>
+      </span>
+    </li>
+  {% endfor %}
+{% endblock %}

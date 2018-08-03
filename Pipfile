@@ -4,10 +4,11 @@ verify_ssl = true
 name = "pypi"
 
 [dev-packages]
+"flake8" = "*"
 
 [packages]
 wagtail = "*"
-"flake8" = "*"
+
 
 [requires]
 python_version = "3.6"
