@@ -137,6 +137,9 @@ class KnowledgeAreaIndexPage(Page):
         ImageChooserPanel('image'),
     ]
 
+    def __str__(self):
+        return '{}'.format(self.knowledge_area)
+
 
 class KnowledgeAreaPage(Page):
     abstract = models.TextField(

@@ -1,12 +1,11 @@
-<header class="mdc-top-app-bar mdc-top-app-bar--fixed page-header">
-  <div className='mdc-top-app-bar__row'>
-    <section className='mdc-top-app-bar__section mdc-top-app-bar__section--align-start'>
-      <!-- {navIcon ? navIcon : null} -->
-      <h3 class="mdc-top-app-bar__title">{{page.title}}</h3>
-
+<header class="mdc-top-app-bar">
+  <div class="mdc-top-app-bar__row">
+    <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
+      <a href="#" class="material-icons mdc-top-app-bar__navigation-icon">menu</a>
+      <span class="mdc-top-app-bar__title">{{ page.title }}</span>
     </section>
-    <section className='mdc-top-app-bar__section mdc-top-app-bar__section--align-end' role='toolbar'>
-      <!-- {actionItems.map((item, key) => React.cloneElement(item, {key}))} -->
+    <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end">
+      <a href="/search" class="material-icons mdc-top-app-bar__navigation-icon">search</a>
     </section>
   </div>
 </header>

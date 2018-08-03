@@ -1,4 +1,12 @@
-import {MDCList} from '@material/list';
-const articles = new MDCRipple(document.querySelector('.article-list'));
+import {MDCList} from '@material/list/index';
+import {MDCTopAppBar} from '@material/top-app-bar/index';
 
-articles.singleSelection = true;
+// Instantiation
+const topAppBarElement = document.querySelector('.mdc-top-app-bar');
+const topAppBar = new MDCTopAppBar(topAppBarElement);
+
+
+const listElement = document.querySelector('.mdc-list');
+const list = new MDCList(listElement);
+
+list.singleSelection = true;

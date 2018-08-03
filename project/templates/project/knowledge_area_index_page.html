@@ -1,26 +1,15 @@
-{% extends 'base.html' %}
+{% extends 'project/base.html' %}
 {% load static wagtailcore_tags navigation_tags wagtailimages_tags %}
-{% block extra_css %}<link rel="stylesheet" type="text/css" href="{% static 'css/project/styles.css' %}" />{% endblock %}
-{% block extra_js %}<script src="{% static 'js/project.js' %} " async></script>{% endblock %}
-{% block content %}
-{% include '_header.html' %}
-<main class="mdc-toolbar-fixed-adjust">
-  <h1><small>{{ page.chapter_number }}</small>{{ page.chapter_title }}</h1>
+{% block main %}
+  <h1>{{page}}</h1>
   <p>{{ page.introduction }}</p>
-  <ul class="article-list mdc-list mdc-list--two-line" aria-orientation="vertical">
+  <ul class="mdc-list mdc-list--two-line" aria-orientation="vertical">
   {% for article in articles %}
-    <li class="article-list-item mdc-list-item">
-      <a class="mdc-list-item-text" href="{% pageurl article %}">
-        <span class="mdc-list-item-text__primary_text">{{ article.title }}</span>
-        <span class="mdc-list-item-text__secondary_text">{{ article.abstract }}</span>
-
-        <span class="article-list-item-title ">
-          {% image article.image fill-660x270-c75 as image %}
-          <img src="{{ image.url }}" width="{{ image.width }}" height="{{ image.height }}" alt="{{ image.alt }}" class="" />
-
-        </span>
-      </a>
+    <li class="mdc-list-item">
+      <span class="mdc-list-item__text">
+        <span class="mdc-list-item__primary-text"><a href="{% pageurl article %}">{{ article.title }}</a></span>
+        <span class="mdc-list-item__secondary-text">{{ article.abstract }}</span>
+      </span>
     </li>
   {% endfor %}
-</main>
-{% endblock content %}
+{% endblock %}

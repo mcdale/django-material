@@ -8,6 +8,7 @@ $mdc-theme-primary: $nesc-accent;
 
 @import "@material/card/mdc-card";
 @import "@material/drawer/mdc-drawer";
+@import '@material/layout-grid/mdc-layout-grid';
 @import "@material/list/mdc-list";
 
 @import "@material/theme/mdc-theme";
@@ -31,11 +32,9 @@ body {
     display: flex;
     flex: 1;
     main {
-      @include mdc-elevation(4);
       flex: 1;
       overflow: auto;
       &.mdc-toolbar-fixed-adjust {
-        margin: 6rem 3rem 0 3rem;
         padding: 1rem 2rem;
       }
     }
