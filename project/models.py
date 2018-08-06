@@ -1,3 +1,4 @@
+import uuid
 from django.db import models
 from modelcluster.fields import ParentalKey
 from modelcluster.models import ClusterableModel
@@ -76,7 +77,7 @@ class People(index.Indexed, ClusterableModel):
         verbose_name_plural = 'People'
 
 
-class KnowledgeArea(models.Model):
+class KnowledgeArea(ClusterableModel):
     chapter_number = models.CharField("Chapter number", max_length=5)
     chapter_title = models.CharField("Chapter title", max_length=100)
 
@@ -86,6 +87,52 @@ class KnowledgeArea(models.Model):
     class Meta:
         verbose_name = 'Knowledge Area'
         verbose_name_plural = 'Knowledge Areas'
+
+
+class Identifiable(ClusterableModel):
+    identifier = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    created_at = models.DateTimeField(auto_now_add=True, editable=False)
+    updated_at = models.DateTimeField(auto_now=True, editable=False)
+
+    class Meta:
+        abstract=True
+
+
+class Versionable(ClusterableModel):
+    version = models.IntegerField(default=0)
+
+    def save(self, *args, **kwargs):
+        self.version = self.version + 1
+        super(Model, self).save(*args, **kwargs)
+
+    class Meta:
+        abstract=True
+
+
+class ProcessGroup(Identifiable):
+    process_group_name = models.CharField('Process Group Name', max_length=100)
+
+    def __str__(self):
+        return '{}'.format(self.process_group_name)
+
+    class Meta:
+        verbose_name = 'Process Group'
+        verbose_name_plural = 'Process Groups'
+        ordering = ['created_at']
+
+
+class Process(Identifiable):
+    knowledge_area = ParentalKey('KnowledgeArea', null=True,on_delete=models.SET_NULL)
+    process_group = ParentalKey('ProcessGroup', null=True,on_delete=models.SET_NULL)
+    process_name = models.CharField('Process Name', max_length=100)
+
+    def __str__(self):
+        return '{}'.format(self.process_name)
+
+    class Meta:
+        verbose_name = 'Process'
+        verbose_name_plural = 'Processes'
+        ordering = ['created_at']
 
 
 class KnowledgeAreaIndexPage(Page):

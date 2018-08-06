@@ -1,18 +1,26 @@
 from wagtail.contrib.modeladmin.options import (
     ModelAdmin, ModelAdminGroup, modeladmin_register)
 
-from .models import KnowledgeArea
+from .models import (KnowledgeArea, ProcessGroup, Process)
+
+
+class ProcessGroupAdmin(ModelAdmin):
+    model = ProcessGroup
 
 
 class KnowledgeAreaAdmin(ModelAdmin):
     model = KnowledgeArea
 
 
+class ProcessAdmin(ModelAdmin):
+    model = Process
+
+
 class DisciplineModelAdminGroup(ModelAdminGroup):
     menu_label = 'Background'
     menu_icon = 'fa-cutlery'  # change as required
     menu_order = 800  # will put in 4th place (000 being 1st, 100 2nd)
-    items = (KnowledgeAreaAdmin,)
+    items = (KnowledgeAreaAdmin,ProcessGroupAdmin,ProcessAdmin)
 
 # class ExecutionModelAdminGroup(ModelAdminGroup):
 #     menu_label = 'Project Background'
